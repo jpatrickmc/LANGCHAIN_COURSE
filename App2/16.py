@@ -16,8 +16,7 @@
 # streamlit run 16.py
 
 import streamlit as st
-from langchain.llms import Ollama  # Wrapper for the local model
-from langchain.chains import LLMChain  # The simplest chain: Prompt -> LLM
+from langchain_community.llms import Ollama  # Wrapper for the local model
 from langchain.prompts import PromptTemplate  # For creating flexible prompt strings
 
 st.title("Local LLM with Langchain!")
@@ -29,7 +28,7 @@ button = st.button("Okay")
 if button:
     if prompt:
         # Initialize the local LLM
-        llm = Ollama(model='llama3.1')  # Specify your model here
+        llm = Ollama(model='llama2')  # Specify your model here
 
         # --- Define the Prompt Template ---
         # A template is a string with placeholders (variables inside curly braces {}).
@@ -45,18 +44,15 @@ Please provide a detailed and thoughtful response as a list with short items.
         # input_variables=["question"] tells LangChain that we will provide a value for {question} later.
         prompt_template = PromptTemplate(template=template, input_variables=["question"])
 
-        # --- Create the LLMChain ---
-        # An LLMChain combines the PromptTemplate and the LLM into a single object.
-        # When we run this chain, it will:
-        # 1. Take our input (the user's prompt).
-        # 2. Fill it into the {question} slot of the template.
-        # 3. Send the complete, formatted string to the LLM.
-        chain = LLMChain(llm=llm, prompt=prompt_template)
+        # --- Create the chain using RunnableSequence ---
+        # Using the pipe operator (|) to chain the prompt template and the LLM.
+        # When invoked, it will:
+        # 1. Take our input dict and fill the {question} slot in the template.
+        # 2. Send the formatted string to the LLM.
+        chain = prompt_template | llm
 
-        # Generate a response using the LLMChain.
-        # chain.run(prompt) takes the user's input string, assigns it to the input variable,
-        # and executes the chain.
-        response = chain.run(prompt)
+        # Generate a response by invoking the chain with the user's input.
+        response = chain.invoke({"question": prompt})
 
         # Display the response
         st.markdown(response)
