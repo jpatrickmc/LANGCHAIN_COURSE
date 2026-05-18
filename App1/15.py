@@ -30,7 +30,7 @@ if button:
         # Initialize the local LLM using LangChain's wrapper.
         # This object acts like a standard function that takes text and returns text.
         # It automatically handles the connection to your local Ollama server.
-        llm = Ollama(model='llama3.1')  # Specify your model here
+        llm = Ollama(model='llama2')  # Specify your model here
 
         # Generate a response using the local LLM.
         # Unlike the native library which returns a dictionary {'response': '...'},
