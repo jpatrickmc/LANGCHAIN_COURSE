@@ -10,13 +10,13 @@
 #
 # Installation:
 # pip install streamlit==1.33.0 langchain==0.2.16 langchain-community==0.2.17
-# pip install streamlit langchain-community
+# pip install streamlit langchain-community langchain-ollama
 # How to run:
 # streamlit run 17.py
 
 import streamlit as st
-from langchain_community.llms import Ollama
-from langchain.prompts import PromptTemplate
+from langchain_ollama import OllamaLLM
+from langchain_core.prompts import PromptTemplate
 
 st.title("Local LLM with Langchain!")
 
@@ -32,7 +32,7 @@ if button:
     # Ensure all fields are filled before proceeding
     if user_name and topic and question and instructions:
         # Initialize the local LLM
-        llm = Ollama(model='llama2') # Specify your model here
+        llm = OllamaLLM(model='llama3.1') # Specify your model here
 
         # --- Define Complex Prompt Template ---
         # Note how we use four different placeholders: {name}, {topic}, {question}, {instructions}.
