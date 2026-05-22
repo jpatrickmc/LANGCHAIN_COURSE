@@ -10,7 +10,7 @@
 #
 # Installation:
 # pip install streamlit==1.33.0 langchain==0.2.16 langchain-community==0.2.17
-# pip install streamlit langchain langchain-community
+# pip install streamlit langchain-community
 #
 # How to run:
 # streamlit run 16.py
