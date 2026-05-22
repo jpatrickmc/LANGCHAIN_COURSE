@@ -18,6 +18,7 @@
 #
 # How to run:
 # streamlit run 21.py
+# Question-What is the similarity if any between Mary and
 
 import streamlit as st
 from langchain_ollama import OllamaLLM
@@ -45,7 +46,7 @@ st.markdown(f"{len(long_text)}")
 if button:
     if long_text:
         # Initialize the local LLM
-        llm = OllamaLLM(model='llama3.1')  # Specify your model here
+        llm = OllamaLLM(model='llama2')  # Specify your model here
 
         # Define the prompt template
         # The AI will see the "Text" variable (which we will fill with only relevant chunks)
