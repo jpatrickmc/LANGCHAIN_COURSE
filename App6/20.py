@@ -81,6 +81,10 @@ reference_sentence = "NLP enables computers to understand human language."
 # Step 1: Break paragraph into sentences
 sentences = split_text_into_sentences(long_text)
 
+print("Sentences extracted from the long text:")
+for sentence in sentences:
+    print(f"- {sentence}")  
+
 # Step 2: Score each sentence against the query
 similarities = calculate_similarity(reference_sentence, sentences)
 
