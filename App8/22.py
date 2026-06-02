@@ -8,6 +8,10 @@
 #
 # It uses the same RAG (Retrieval-Augmented Generation) logic as the previous lesson,
 # but adds the ability to accumulate data over time rather than pasting it all at once.
+# an AI framework that improves Large Language Model (LLM) responses by fetching relevant 
+# facts from external data sources before generating text. Instead of relying solely 
+# on static training data, RAG grounds answers in specific, up-to-date information, 
+# reducing errors and providing verifiable sources.
 #
 # Installation:
 # pip install streamlit==1.33.0 langchain==0.2.16 langchain-community==0.2.17 spacy==3.7.4
@@ -63,7 +67,7 @@ button = st.button("ASK")
 if button:
     if question:
         # Initialize the local LLM
-        llm = Ollama(model='llama3.1')  # Specify your model here
+        llm = Ollama(model='llama2')  # Specify your model here
 
         # Define the RAG prompt template
         template = """You are a helpful assistant. Please answer the following question based on the below text:
