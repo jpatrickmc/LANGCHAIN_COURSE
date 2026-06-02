@@ -12,7 +12,7 @@
 # Installation:
 # pip install streamlit==1.33.0 langchain==0.2.16 langchain-community==0.2.17 spacy==3.7.4
 # pip install streamlit langchain langchain-community spacy
-# python -m spacy download en_core_web_md
+# python3 -m spacy download en_core_web_md
 #
 # How to run:
 # streamlit run 22.py
@@ -20,7 +20,7 @@
 # Note: Ensure you create an empty file named "note.text" in the folder before running.
 
 import streamlit as st
-from langchain.llms import Ollama
+from langchain_community.llms import Ollama
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain.text_splitter import RecursiveCharacterTextSplitter
